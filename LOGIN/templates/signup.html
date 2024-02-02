@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNUP PAGE BY JALEEL</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <marquee class="owner" behavior="alternate" direction="" scrollamount="8">Create By Hafiz Jaleel. Follow for more....!</marquee>
+    <div class="center">
+        <h1>SIGN UP</h1>
+        <form method="post" action="{% url 'signup' %}">
+            {% csrf_token %}
+            
+            {% if form.errors %}
+                <ul class="messages">
+                    {% for field, error_list in form.errors.items %}
+                        {% for error in error_list %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <div class="text_field">
+                <input type="text" name="username" required>
+                <span></span>
+                <label>Username</label>
+            </div>
+            <div class="text_field">
+                <input type="password" name="password" required>
+                <span></span>  
+                <label>Password</label>
+            </div>
+            <div class="text_field">
+                <input type="password" name="confirm_password" required>
+                <span></span>  
+                <label>Confirm Password</label>
+            </div>
+            <input type="submit" value="Sign Up">
+            <div class="signin">
+                Already have an account? <a href="{% url 'login' %}">Login</a>
+            </div>
+            <div class="link">Instagram: <a href="https://www.instagram.com/itxme_jaleel/" target="_blank">itxme_jaleel</a></div>
+        </form>
+    </div>
+</body>
+</html>

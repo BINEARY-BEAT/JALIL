@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN PAGE BY JALEEL</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <marquee class="owner" behavior="alternate" direction="" scrollamount="8">Created By Hafiz Jaleel. Follow for more....!</marquee>
+    <div class="center">
+        <h1>LOGIN</h1>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <div class="text_field">
+                <input type="text" name="username" required>
+                <span></span>
+                <label>Username</label>
+            </div>
+            <div class="text_field">
+                <input type="password" name="password" required>
+                <span></span>  
+                <label>Password</label>
+            </div>
+            <div class="pass">Forgot Password?</div>
+            <input type="submit" value="login"> <br>
+            <div class="signup">
+                Don't Have Account? <a href="{% url 'signup' %}">Sign Up</a>
+            </div>
+            <div class="link">Instagram: <a href="https://www.instagram.com/itxme_jaleel/" target="_blank">itxme_jaleel</a></div>
+        </form>
+    </div>
+</body>
+</html>
